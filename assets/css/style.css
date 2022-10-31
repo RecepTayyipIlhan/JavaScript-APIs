@@ -1,0 +1,20 @@
+
+.tayyeap{
+    background-color:rgba(59, 196, 220, 0.574);
+--background-primary : rgba(59, 196, 220, 0.967);
+--background-secondary : rgba(236, 53, 53, 0.715);
+
+--action-primary : hsl(214,32%,91%);
+--action-secondary : hsl(210,38%,95%);
+
+--foreground-primary : hsl(218,23%,23%);
+--foreground-secondary : hsl(216,15%,51%);
+--foreground-tertiary : hsl(214,20%,69%);
+
+--accent:  rgb(227, 64, 64); 
+
+}
+:root{
+    --white: hsl(0,0,100%)
+
+}

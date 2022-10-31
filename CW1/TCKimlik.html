@@ -72,7 +72,7 @@ function increment() {
     let number2r = ReverseString(number2)
     console.log(ReverseString(number2))
     let num = Number(ReverseString(number))
-    let num2 = Number(ReverseString(number2))
+    //let num2 = Number(ReverseString(number2))
     
    // console.log(num)
     num+=97
@@ -80,7 +80,7 @@ function increment() {
     num = num.toString()
     let con = number2r.concat(num)
     console.log(con)
-    out.innerText = c
+    out.innerText = con
 }
 
 
@@ -137,7 +137,7 @@ function report() {
     console.log(v, t)
 }
     title.innerText = document.title
-    sample.innerText = verifyIBAN+'\n'+report
+    sample.innerText = ReverseString+'\n'+increment
     kimlik.onchange = report
     kimlik.value = '212 212 212 72'
     report()
