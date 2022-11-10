@@ -1,17 +1,12 @@
- /*new gridjs.Grid({
+new gridjs.Grid({
 
     columns: ["Class Works","Linkler"],
     data : [
-        { 
-            name: 'Name',
-            surname :html(` <a href="https://github.com/RecepTayyipIlhan/JavaScript-APIs">Repoya Ulaşmak İçin Tıklayınız</a> `)
-          },
-          'Email',
-          { 
-            name: 'Actions',
-            formatter: (_, row) => html(` <a href="https://github.com/RecepTayyipIlhan/JavaScript-APIs">Repoya Ulaşmak İçin Tıklayınız</a> `)
-          },
-          
+      ["John", "john@example.com", "(353) 01 222 3333"],
+      ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+      ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
+      ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
+      ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
     ],
     
     pagination : {limit : 2},
@@ -32,57 +27,21 @@
         }
     },
     
-}).render(document.getElementById("wrapper"))*/
-function get_Data () {
-  const tableRef = useRef(null);
-  const wrapperRef = useRef(null);
-  
-  useEffect(() => {
-    const grid = new Grid({
-      from: tableRef.current,
-    }).render(wrapperRef.current);
-  });
-  return (
-    <>
-      <table ref={tableRef}>
-  <tr>
-      <th>Class Works</th>
-      <th>Linkler</th>
-  </tr>
-  <tr>
-    <td>CW0</td>
-    <td>
-      <a href="https://receptayyipilhan.github.io/JavaScript-APIs/CW0/Counting.html">Counting</a>
-    </td>
-  </tr>
-  <tr>
-      <td>CW1</td>
-      <td>
-          <a href="https://receptayyipilhan.github.io/JavaScript-APIs/CW1/TCKimlik.html">Iban & Tc Kimlik</a> 
-      </td>
-  </tr>
-
-  <tr>
-      <td>CW2</td>
-      <td>
-          <a href="https://receptayyipilhan.github.io/JavaScript-APIs/CW2/ObjectList .html">Objects And Arrays</a> 
-      </td>
-  </tr>
-  <tr>
-    <td>CW3</td>
-    <td>
-        <a href="https://receptayyipilhan.github.io/JavaScript-APIs/CW3/cw4.html">Inspector</a> 
-    </td>
-</tr>
-
-
-</table>
-      <div ref={wrapperRef}></div>
-      </>
-  );
-  
-}
-
-get_Data();
-console.log("sfgsdgds");
-  
+}).render(document.getElementById("wrapper"));
+/*
+const grid = new gridjs.Grid({
+  columns: [
+      { 
+        name: 'Name',
+        formatter: (cell) => html(`<b>${cell}</b>`)
+      },
+      'Email',
+      { 
+        name: 'Actions',
+        formatter: (_, row) => html(`<a href='mailto:${row.cells[1].data}'>Email</a>`)
+      },
+   ],
+  data: Array(5).fill().map(x => [
+    
+  ])
+});*/

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+   <html lang="en-US"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+   
+    <title>Event listeners</title>
+
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=FLRYyCL4YcM4ETGucghu9rKebNtc6HsFIHnYMifYdFjfqJpjStuQjvogpEtQgShfeLq5CTEgPwdshxZeLsBmJIgU7BzBJrjEUTW1txVQQ-1bXoK263kJzrOl_DSZ4oNS" charset="UTF-8"></script><style> 
+    body { max-width: 440px; }
+	#online { color: blue; }
+  </style>
+</head>
+
+<body>
+
+<h2> Battery Status </h2>
+<p style="color: blue;"> Remaining Time : <span style="color: forestgreen;" id=remaining>? </span> </p>
+<div style="color: red;" id="charge"></div>
+<progress id="bar" max="100"></progress>
+<span id="percent"></span>
+<h2>Online Status</h2>
+<p id="online"></p>
+<h2>Keyboard</h2>
+<span id="modifier"></span><span id="key"></span>
+<br><br>
+<b>Sample code</b>
+<pre id="sample"> </pre>
+<hr>
+
+<script>
+"use strict";
+function init() {
+    navigator.getBattery().then(b => {
+      let levelChange = () => {
+
+        percent.innerText = "%"+ 100*b.level;
+        bar.value = 100*b.level;
+
+      }
+
+      levelChange();
+      b.onlevelchange = levelChange;
+      
+      let chargeChange = () => {
+        charge.innerText = (b.charging) ?
+         "Charging..." : "Discharging...";
+      }
+      chargeChange();
+      b.onchargingchange = chargeChange;  })
+    
+    online.innerText = (window.navigator.onLine)?
+    "connected - online" : "disconnected - offline";
+
+    window.addEventListener("online", () => {
+      online.innerText = "connected -- online"; });
+
+    window.addEventListener("offline", () => {
+      online.innerText = "disconnected -- offline"; });
+
+      navigator.getBattery().then(b =>
+                remaining.innerText = Math.floor(b.dischargingTime / (3600)) + ":" + b.dischargingTime+ "remaining")
+
+
+    window.onkeydown = (evt) => {   
+      key.innerText = evt.key;
+    };
+
+    window.onkeyup = (evt) => {  
+      key.innerText = "   ";  
+    };
+}
+    sample.innerText = init;
+    init();
+</script>
+
+
+
+</body></html>
