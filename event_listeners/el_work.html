@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+   <html lang="en-US"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+   
+    <title>Event listeners</title>
+
+  <script type="text/javascript" charset="UTF-8"></script><style> 
+    body { max-width: 440px; }
+	
+  </style>
+</head>
+
+<body>
+    <div id="result"> Event Listeners Test </div>
+    <div id="rnd"></div>
+    <button type="button" id="btn"> Click </button> 
+    
+
+    <script>
+        var Btn = document.querySelector('#btn');
+        var Alert = document.querySelector('#result')
+        var Rnd = document.querySelector('#rnd')
+
+        Btn.addEventListener("click",showDate);
+
+        Btn.addEventListener("mouseover",mOver);
+
+        Btn.addEventListener("mouseout",mOut);
+
+        window.addEventListener("resize",random)
+
+        function random(){
+            Rnd.innerText=Math.random();
+        }
+
+        function showDate(){
+            document.querySelector('#result').innerHTML= "<span>"+Date()+"</span>";
+        }
+
+        function mOver(){
+            document.querySelector('#result').innerText= "Cursor on me at the moment";
+        }
+
+        function mOut(){
+            document.querySelector('#result').innerText= "Cursor disappeared";
+        }
+
+    </script>
+
+</body>
+
+</html>

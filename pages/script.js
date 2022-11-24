@@ -1,4 +1,4 @@
-new gridjs.Grid({
+/*new gridjs.Grid({
 
     columns: ["Class Works","Linkler"],
     data : [
@@ -27,7 +27,7 @@ new gridjs.Grid({
         }
     },
     
-}).render(document.getElementById("wrapper"));
+}).render(document.getElementById("wrapper"));*/
 /*
 const grid = new gridjs.Grid({
   columns: [
