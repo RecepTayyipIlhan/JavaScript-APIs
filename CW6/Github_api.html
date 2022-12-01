@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>GitHub Users</title>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=wkJPc4VKOPrxEjiNdibdkUOJ2AqloUEvK2R0a0c9M6Nz0CM-8_Yx41x0xFnIKIUs_1tSASPx7Uiafxw7QeTxWleLEx9atLRdtJxvubS1xJ0bDauMsSYdDLMU01jVoyk5" charset="UTF-8"></script><style>
+        body {
+            max-width: 400px;
+        }
+        img{
+            width: 15px;
+            height: 15px;
+            border: 0.2ch solid green;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h2 id=title></h2>
+    <input type=text id=usr value=receptayyipilhan onChange="readUser()">
+    <p id=out></p>
+    <hr />
+    <b>Sample code</b>
+    <pre id=sample></pre>
+    <hr />
+    </p>
+
+    <script>
+        "use strict";
+        function error(t) {
+            out.style.color = 'red'
+            out.innerText = t; throw t
+        }
+        async function toJSON(url) {
+            try {
+                let r = await fetch(url)
+                if (!r.ok) exception(r.status)
+                return r.json()
+            } catch (e) {
+                error(e)
+            }
+        }
+
+        function exception(s) {
+            switch (s) {
+                case 403:
+                throw 'Rate limit exceeded'
+                case 404:
+                throw usr.value+' not found'
+                default:
+                throw 'Status '+s
+            }
+        }
+        async function readUser() {
+            const BR = "<BR>",
+                URL = "https://api.github.com/users/"
+            let u = await toJSON(URL + usr.value)
+            if (!u || !u.login)
+                error(usr.value + ' not found')
+            out.style.color = '';
+            out.innerHTML = '';
+            let imgElmnt = document.createElement("img");
+            imgElmnt.src = u.avatar_url
+
+            //start with avatar
+            imgElmnt.style = "width:250px;height:250px;"
+            out.appendChild(imgElmnt); 
+            out.innerHTML += BR;
+
+            //name and location
+            let infoElement = u.name || u.login;
+            infoElement += BR;
+            
+            
+            if (u.login) infoElement += `${u.login}`.fontcolor("gray");
+            infoElement += BR+BR;
+            infoElement += '<img src="assets/user.png">';
+
+
+            if (u.company) infoElement += u.company;
+            else
+                infoElement += 'Can Not Found'.fontcolor("green");
+            infoElement += BR;
+
+            //add location
+            infoElement += '<img src="assets/placeholder.png" >';
+            if (u.location) infoElement += u.location;
+            else
+                infoElement += 'Can Not Found'.fontcolor("red");
+            infoElement += BR;
+
+            //add mail
+            infoElement += '<img src="assets/email.png">';
+            if (u.blog) infoElement += u.blog;
+            else
+                infoElement += 'Can Not found'.fontcolor("red");
+                out.innerHTML += infoElement + BR;
+
+            //add GitHub link  
+            let userLink = "github.com/" + u.login
+            let linkElement = document.createElement("a")
+            linkElement.href = "https://github.com/" + u.login ;
+            linkElement.target = "NewTab"
+            linkElement.innerHTML += '<img src="assets/link.png" >';
+            linkElement.innerHTML += linkElement.href
+            out.appendChild(linkElement)
+        }
+        title.innerText = document.title
+        sample.innerText = toJSON + '\n' + readUser
+        out.innerText = "Reading data"
+        readUser()
+    </script>
+
+</body>
+
+</html>

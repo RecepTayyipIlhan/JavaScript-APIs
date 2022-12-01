@@ -78,6 +78,6 @@ btnStart.addEventListener("click", function(){
         }
         c.clearRect(275,275,275,275);
         c.drawImage(images[i],275,275,275,275);
-    },200)
+    },250)
 });
 
