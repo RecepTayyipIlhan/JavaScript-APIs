@@ -1,0 +1,13 @@
+{
+    "name": "Hang Man",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "blue",
+    "icons": [
+      {
+        "src": "hangman-game.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

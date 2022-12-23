@@ -11,7 +11,7 @@ const wrongLetters = [];
 let selectedWord = getRandomWord();
 
 function getRandomWord() {
-    const words = ["tophalis"];
+    const words = ["top halis"];
     return words[Math.floor(Math.random() * words.length)];
 }
 
