@@ -11,7 +11,7 @@ const wrongLetters = [];
 let selectedWord = getRandomWord();
 
 function getRandomWord() {
-    const words = ["top halis"];
+    const words = ["html","css","javascript","rust","dart","kotlin","swift","flutter","firebase","sql","java"];
     return words[Math.floor(Math.random() * words.length)];
 }
 
@@ -27,13 +27,13 @@ function displayWord() {
     const w = word_el.innerText.replace(/\n/g,'');
     if (w === selectedWord) {
         popup.style.display = 'flex';
-        message_el.innerText = 'Tebrikler kazandınız.';
+        message_el.innerText = 'Congrats you win :)';
     }
 }
 
 function updateWrongLetters() {
     wrongLetters_el.innerHTML = `
-        ${wrongLetters.length>0?'<h3>Hatalı harfler</h3>':''}
+        ${wrongLetters.length>0?'<h3>Wrong words</h3>':''}
         ${wrongLetters.map(letter=> `<span>${letter}<span>`)}
     `;
 
@@ -49,7 +49,7 @@ function updateWrongLetters() {
 
     if(wrongLetters.length === items.length) {
         popup.style.display = 'flex';
-        message_el.innerText = 'Maalesef Kaybettiniz.';
+        message_el.innerText = 'You lose :(';
     }
 }
 

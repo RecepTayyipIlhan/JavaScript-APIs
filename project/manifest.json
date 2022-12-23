@@ -1,6 +1,6 @@
 {
     "name": "Hang Man",
-    "start_url": "index.html",
+    "start_url": "hangman.html",
     "display": "standalone",
     "background_color": "blue",
     "icons": [
